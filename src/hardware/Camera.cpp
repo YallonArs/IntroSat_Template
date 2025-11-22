@@ -31,9 +31,9 @@ int Camera::timedRead() {
 // 		while (UART->read() != *it);
 // }
 
-bool Camera::waitForBytes(std::initializer_list<uint8_t> bytes, uint16_t length) {
+bool Camera::waitForBytes(std::initializer_list<uint8_t> bytes) {
 	auto it = bytes.begin();
-	for (size_t i = 0; i < length && it != bytes.end(); ++i, ++it) {
+	for (size_t i = 0; i < bytes.size(); ++i, ++it) {
 		int c;
 		do {
 			c = timedRead();
@@ -44,11 +44,11 @@ bool Camera::waitForBytes(std::initializer_list<uint8_t> bytes, uint16_t length)
 }
 
 void Camera::waitForPreamble() {
-	waitForBytes({0xFF, 0xFF, 0x00}, 3);
+	waitForBytes({0xFF, 0xFF, 0x00});
 }
 
 void Camera::waitForPostamble() {
-	waitForBytes({0x00, 0xFF, 0x00}, 3);
+	waitForBytes({0x00, 0xFF, 0x00});
 }
 
 void Camera::readBytes(uint8_t *buffer, uint16_t length) {
@@ -60,7 +60,7 @@ void Camera::readBytes(uint8_t *buffer, uint16_t length) {
 bool Camera::capture() {
 	UART->write(0x74);
 
-	return waitForBytes({0xFF, 0x00, 0xFF}, 3);
+	return waitForBytes({0xFF, 0x00, 0xFF});
 }
 
 ImageProperties Camera::getProperties() {

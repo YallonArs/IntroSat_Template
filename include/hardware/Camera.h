@@ -29,7 +29,7 @@ protected:
 	uint32_t _timeoutMs;
 
 	int timedRead();
-	bool waitForBytes(std::initializer_list<uint8_t> bytes, uint16_t length);
+	bool waitForBytes(std::initializer_list<uint8_t> bytes);
 	void waitForPreamble();
 	void waitForPostamble();
 	void readBytes(uint8_t *buf, uint16_t length);
