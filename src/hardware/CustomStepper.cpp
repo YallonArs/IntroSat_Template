@@ -9,7 +9,7 @@ CustomStepper::CustomStepper(uint8_t dir_pin, uint8_t step_pin, uint8_t enable_p
 	digitalWrite(enable_pin, LOW);
 }
 
-double CustomStepper::moveByAngle(float angle_deg) {
+double CustomStepper::rotate(double angle_deg) {
 	if (angle_deg > 0)
 		digitalWrite(_dir_pin, !_direction_mode);
 	else
@@ -30,17 +30,17 @@ double CustomStepper::moveByAngle(float angle_deg) {
 	return _current_angle_deg;
 }
 
-double CustomStepper::moveToTarget(float target_deg) {
-	float delta = target_deg - _current_angle_deg;
+double CustomStepper::rotateTo(double target_deg) {
+	double delta = target_deg - _current_angle_deg;
 	
-	return moveByAngle(delta);
+	return rotate(delta);
 }
 
 void CustomStepper::start(bool dir, uint16_t velocity) {
 	digitalWrite(_dir_pin, dir);
 
 	// TODO: implement velocity control
-	float t = 3000.;
+	double t = 3000.;
 
 	PinName step_pin_name = digitalPinToPinName(_step_pin);
 	uint32_t frequency = 1000000.00 / (t * 2);

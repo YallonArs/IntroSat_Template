@@ -9,8 +9,8 @@ using IntroSatLib::LightSensor;
 
 class OpticalArray {
 private:
-	static const uint8_t NUM_OPTICALS = 4;
-	static const uint8_t addr0 = 0x50;
+	static constexpr uint8_t NUM_OPTICALS = 4;
+	static constexpr uint8_t addr0 = 0x50;
 	SlidingAverage<5> lightAverages[NUM_OPTICALS];
 	TwoWire &i2c;
 

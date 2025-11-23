@@ -12,6 +12,7 @@ public:
 	CustomAccelerometer(TwoWire &hi2c = Wire);
 
 	vector3d<float> readAcceleration();
+	vector3d<float> readAccelerationAveraged();
 	double getInclination(Axis target_axis);
 	
 	using IntroSatLib::AccelerometerV2::Init;

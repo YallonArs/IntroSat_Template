@@ -9,6 +9,6 @@ double shortestAngleDiff(double target, double current) {
 	return diff;
 }
 
-double round(double num, uint16_t precision) {
+double round(double num, uint8_t precision) {
 	return std::round(num * pow(10, precision)) / pow(10, precision);
 }
