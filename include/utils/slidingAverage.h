@@ -1,8 +1,9 @@
 #pragma once
 
 #include <cstdint>
+
 #include "utils/vector3d.h"
-#include "utils/Axis.h"
+#include "utils/utils.h"
 
 template <uint16_t N>
 class SlidingAverage {

@@ -5,7 +5,7 @@
 #include <AccelerometerV2.h>
 
 #include "utils/vector3d.h"
-#include "utils/Axis.h"
+#include "utils/utils.h"
 
 class CustomAccelerometer : private IntroSatLib::AccelerometerV2 {
 public:
